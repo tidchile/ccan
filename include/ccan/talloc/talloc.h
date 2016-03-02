@@ -28,7 +28,7 @@
 #include <stdarg.h>
 #include <ccan/typesafe_cb/typesafe_cb.h>
 #include <ccan/compiler/compiler.h>
-#include "config.h"
+#include <ccan/config.h>
 
 /*
   this uses a little trick to allow __LINE__ to be stringified
