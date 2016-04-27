@@ -10,9 +10,22 @@
 # Authors: Felipe Ortiz
 # Version: 0.9
 
-CC=gcc
+CC=gcc -std=gnu99
 INCLUDES=-Iinclude
-COPTS=-Wall -g -O2 -std=gnu99
+
+
+ifeq (,$(filter $(DYNAMIC), true false))
+ ifdef DYNAMIC
+  $(error DYNAMIC can be true or false (false by deafult))
+ endif
+endif
+
+ifeq ($(DYNAMIC),true)
+ COPTS=-Wall -Og -fPIC
+else
+ COPTS=-Wall -Og
+endif
+
 CFLAGS=$(COPTS) $(INCLUDES)
 LDFLAGS=
 LDLIBS=
